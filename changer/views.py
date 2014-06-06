@@ -4,13 +4,13 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.views.generic.edit import FormView, CreateView, UpdateView
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
 from changer.forms import UpdateCompanyForm, CreateDeviceForm
-from changer.models import Company
+from changer.models import Company, Device
 
 
 class Index(TemplateView):
@@ -69,3 +69,23 @@ class CreateDevice(CreateView):
     def dispatch(self, request, *args, **kwargs):
         request.session.set_test_cookie()
         return super(CreateDevice, self).dispatch(request, *args, **kwargs)
+
+
+class Manage(ListView):
+    model = Device
+    template_name = 'changer/manage.html'
+
+    def get_queryset(self):
+        return Device.objects.filter(company=Company.objects.get(user=self.request.user)).order_by('name')
+
+    def get_context_data(self, **kwargs):
+        context = super(Manage, self).get_context_data(**kwargs)
+        return context
+
+
+class DeviceView(DetailView):
+    model = Device
+    template_name = 'changer/device.html'
+
+    def get_object(self):
+        return get_object_or_404(Device, pk=self.kwargs['pk'])

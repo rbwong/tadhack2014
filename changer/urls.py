@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-from changer.views import Index, CreateCompany, UpdateCompany, CreateDevice
+from changer.views import Index, CreateCompany, UpdateCompany, CreateDevice, Manage, DeviceView
 
 
 from django.contrib import admin
@@ -15,4 +15,8 @@ urlpatterns = patterns('',
                            name='update_company'),
                        url(r'^createdevice/$', CreateDevice.as_view(),
                            name='create_device'),
+                       url(r'^manage/$', Manage.as_view(),
+                           name='manage'),
+                       url(r'^device/(?P<pk>[\w-]+)/$', DeviceView.as_view(),
+                           name='device'),
                        )

@@ -1,0 +1,13 @@
+.container {
+    background: white;
+    opacity: .8;
+    font-size: 16px;
+    max-width: 330px;
+    margin: 0 auto;
+    margin-top: -120px;
+    margin-bottom: 290px;
+}
+
+.container.device {
+    margin-bottom: 420px;
+}

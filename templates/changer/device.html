@@ -1,0 +1,16 @@
+{% extends 'base2.html' %}
+{% load crispy_forms_tags %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/device.css" %}" />
+{% endblock %}
+
+{% block body %}
+    <div class="container device">
+      {{ object.name }}
+    </div>
+{% endblock %}

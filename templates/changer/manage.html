@@ -1,0 +1,32 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/device.css" %}" />
+{% endblock %}
+
+{% block body %}
+    <div class="container manage">
+        <header class="page-header clearfix">
+            <div class="pull-left">
+                <h3 class="page-title">Devices</h3>
+            </div>
+        </header>
+
+        <table class="table table-striped table-condensed table-hover">
+
+            {% for device in object_list %}
+                <tr>
+                    <td class="col-md-12">
+                        <div class="pull-left">
+                            <a href="/device/{{ device.id }}/">{{ device.name }}</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
