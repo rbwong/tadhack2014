@@ -3,6 +3,9 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.views.generic.edit import FormView, View, CreateView
 from django.contrib.auth.forms import UserCreationForm
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
 
 class Register(CreateView):
@@ -16,6 +19,7 @@ class Register(CreateView):
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
 
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
         request.session.set_test_cookie()
         return super(Register, self).dispatch(request, *args, **kwargs)

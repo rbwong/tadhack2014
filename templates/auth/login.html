@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 {% load crispy_forms_tags %}
 {% load bootstrap3 %}
 {% load static %}
@@ -10,7 +10,8 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div id="main-content" class="container signin">
+
       <form action="/login/" class="form-signin" method="post" role="form">
         <h2 class="form-signin-heading">Please sign in</h2>
         {% csrf_token %}

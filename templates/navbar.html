@@ -1,7 +1,7 @@
 <div id="header" style="height: 272.0387994143485px;">
         <div id="top-header">
             <div class="wrap">
-                <a id="site-home-url" href="http://icannhas.com">
+                <a id="site-home-url" href="/">
                 <div id="logo-container">
                     <div id="logo" style="background-size: 80%;"></div>
                     <div id="title-container" style="width: 140px;"><h1>Trucker</h1></div>
@@ -11,10 +11,17 @@
                     <div class="menu-main-menu-container">
                       <ul id="menu-main-menu" class="menu">
                         <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a href="#">Blog</a></li>
-                        <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="#">Product</a></li>
                         <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="#">Partners</a></li>
                         <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="#">Contact</a></li>
+                        {% if user.is_superuser %}
+                        <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="/register/">Add Client</a></li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="/logout/">Logout</a></li>
+                        {% else %}
                         <li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="/login/">Login</a></li>
+                        {% endif %}
+
                       </ul>
                     </div>
                 </div>
