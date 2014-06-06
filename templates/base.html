@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+{% load staticfiles %}
+
+<html>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <title>{% block title %}Inventory System{% endblock %}</title>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static "css/base.css" %}" />
+        <link rel="stylesheet" href="{% static "css/footer.css" %}" />
+        {% block css %}{% endblock %}
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        {% block js_up %}{% endblock %}
+    </head>
+
+    <body>
+        {% block body_header %}
+            {% include "navbar.html" %}
+        {% endblock %}
+
+        {% block body %}{% endblock %}
+
+        {% block body_footer %}
+        {% endblock %}
+    </body>
+
+    {% block js_bottom %}{% endblock %}
+</html>
