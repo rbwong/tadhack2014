@@ -1,0 +1,21 @@
+
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.container form {
+    background: white;
+    opacity: .8;
+    margin-top: -90px;
+    margin-bottom: 20px;
+}
+
+.container.signin form {
+    margin-bottom: 140px;
+}
+
+.container.device form {
+    margin-bottom: 140px;
+}
