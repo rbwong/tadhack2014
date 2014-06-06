@@ -1,0 +1,21 @@
+{% extends 'base2.html' %}
+{% load crispy_forms_tags %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title %}Update Profile{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/signin.css" %}" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+      <form action="/createprofile/" class="form-signin" method="post" role="form">
+        <h2 class="form-signin-heading">Create Profile</h2>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+      </form>
+    </div>
+{% endblock %}
