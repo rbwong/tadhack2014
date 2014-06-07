@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-from changer.views import Index, CreateCompany, UpdateCompany, CreateDevice, Manage, DeviceView,MyView,YourView
+from changer.views import Index, CreateCompany, UpdateCompany, CreateDevice, Manage, DeviceView
 
 
 from django.contrib import admin
@@ -19,6 +19,5 @@ urlpatterns = patterns('',
                            name='manage'),
                        url(r'^device/(?P<pk>[\w-]+)/$', DeviceView.as_view(),
                            name='device'),
-                       url(r'^get/', MyView.as_view(),name='get'),
-                       url(r'^send/', YourView.as_view(),name='send'),
+
                        )
