@@ -14,39 +14,11 @@ from django.http import HttpResponse
 from changer.forms import UpdateCompanyForm, CreateDeviceForm
 from changer.models import Company, Device
 
-import requests
+#import requests
 
 
 class Index(TemplateView):
     template_name = "changer/index.html"
-
-
-class MyView(FormView):
-    def get(self, request):
-        # <view logic>
-       # print request
-       # k= request.GET['code']
-
-        payload = {'address':'09062321440','message':'update'}
-        r = requests.get("http://devapi.globelabs.com.ph/location/v1/queries/location?access_token=HC19DsFVgMg8zGCJUXRk7aVnyDBLfZf3hgvQmRuchfU&address=9062321440&requestedAccuracy=100")
-        print r
-        return HttpResponse(' ',r)
-
-
-class YourView(ListView):
-        payload = {'address':'09062321440','message':'update'}
-        r = requests.post("http://devapi.globelabs.com.ph/smsmessaging/v1/outbound/0370/requests?access_token=HC19DsFVgMg8zGCJUXRk7aVnyDBLfZf3hgvQmRuchfU", data=payload)
-        print r
-        model = Device
-        template_name = 'changer/manage.html'
-
-        def get_queryset(self):
-            return Device.objects.filter(company=Company.objects.get(user=self.request.user)).order_by('name')
-
-        def get_context_data(self, **kwargs):
-            context = super(YourView, self).get_context_data(**kwargs)
-            return context
-
 
 
 class CreateCompany(CreateView):
