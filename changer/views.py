@@ -89,3 +89,7 @@ class DeviceView(DetailView):
 
     def get_object(self):
         return get_object_or_404(Device, pk=self.kwargs['pk'])
+
+    def get(self, request):
+        # <view logic>
+        return HttpResponse('result')
