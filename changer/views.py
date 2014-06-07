@@ -25,12 +25,12 @@ class MyView(FormView):
     def get(self, request):
         # <view logic>
        # print request
-        k= request.GET['code']
+       # k= request.GET['code']
 
         payload = {'address':'09062321440','message':'update'}
-        r = requests.post("http://devapi.globelabs.com.ph/location/v1/queries/location?access_token=HC19DsFVgMg8zGCJUXRk7aVnyDBLfZf3hgvQmRuchfU&address=9062321440&requestedAccuracy=100", data=payload)
+        r = requests.get("http://devapi.globelabs.com.ph/location/v1/queries/location?access_token=HC19DsFVgMg8zGCJUXRk7aVnyDBLfZf3hgvQmRuchfU&address=9062321440&requestedAccuracy=100")
         print r
-        return HttpResponse(k,' ',r)
+        return HttpResponse(' ',r)
 
 
 class YourView(ListView):
